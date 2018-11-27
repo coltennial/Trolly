@@ -32,7 +32,7 @@ class BoardsController < ApplicationController
   private 
 
     def set_board 
-      @board = board.single_board(params[:id])
+      @board = Board.single_board(params[:id])
     end 
 
     def board_params 

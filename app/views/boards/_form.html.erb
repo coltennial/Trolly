@@ -1,0 +1,9 @@
+<%= form_with(model: @board, local: true) do |f| %>
+
+  <div class="field"> 
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
