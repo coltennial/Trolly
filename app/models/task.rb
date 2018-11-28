@@ -46,7 +46,7 @@ class Task < ApplicationRecord
   def self.delete_task(task_id)
     Task.find_by_sql(["
       DELETE FROM tasks AS l 
-      WHERER l.id = ?  
+      WHERE l.id = ?  
     ;", task_id]) 
 
   end

@@ -10,10 +10,10 @@ class List < ApplicationRecord
   def self.all_lists(board_id)
     List.find_by_sql(["
       SELECT * 
-      FROM lists AS l 
-      WHERE l.board_id = #{board_id}  
+      FROM lists AS b 
+      WHERE b.board_id = #{board_id}  
     "])
-  end 
+  end  
 
   def self.single_list(list_id)
     List.find_by_sql(["
@@ -33,7 +33,6 @@ class List < ApplicationRecord
       created_at: DateTime.now,
       updated_at: DateTime.now
     }]) 
-
   end
 
   def self.update_list(list_id, p)
@@ -48,7 +47,7 @@ class List < ApplicationRecord
   def self.delete_list(list_id)
     List.find_by_sql(["
       DELETE FROM lists AS l 
-      WHERER l.id = ?  
+      WHERE l.id = ?  
     ;", list_id]) 
 
   end
