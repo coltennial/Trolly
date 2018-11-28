@@ -29,7 +29,7 @@ class Board < ApplicationRecord
       VALUES (:name, :user_id, :created_at, :updated_at);  
     ",{
       name: p[:name],
-      user_id: id,
+      user_id: board_id,
       created_at: DateTime.now,
       updated_at: DateTime.now
     }]) 
@@ -48,7 +48,7 @@ class Board < ApplicationRecord
   def self.delete_board(board_id)
     Board.find_by_sql(["
       DELETE FROM boards AS b 
-      WHERER b.id = ?  
+      WHERE b.id = ?  
     ;", board_id]) 
 
   end
