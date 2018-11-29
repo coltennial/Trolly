@@ -15,8 +15,16 @@ gem 'devise'
 gem 'semantic-ui-sass'
 
 group :development, :test do
+    # Call this method to help debug
   gem 'pry'
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  # Rails testing framework
+  gem 'rspec-rails'
+  # Provides Fast and Easy Testing
+  gem 'shoulda-matchers'
+  # Handles Test Coverage
+  gem 'simplecov'
+  # Allows us to build data quicker and easier
+  gem 'factory_bot_rails'
 end
 
 group :development do

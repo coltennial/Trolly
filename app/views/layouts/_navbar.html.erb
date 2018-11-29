@@ -1,15 +1,19 @@
 <nav>
 
-  <%= link_to "Boards", boards_path %>
-  <%= link_to "Create Board", new_board_path %>
-  <div> 
+  <div id="left-nav">
+    <%= link_to "Boards", boards_path, class: "nav_link" %>
+  </div>
+
+  <h2 id="trolly"> Trolly </h2>
+
+  <div id="login-logout"> 
     <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-
+    <div id="right-nav">
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav_link" %>
+    </div>
     <% else %>
-      <%= link_to "Register", new_user_registration_path %>
-      <%= link_to "Login", new_user_session_path %>
 
+      <%= link_to "Login", new_user_session_path, class: "nav_link" %>
     <% end %>
   </div>
 

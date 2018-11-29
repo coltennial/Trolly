@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   
   def index
-    @lists = List.all_lists(@board)
+    @lists = @board.lists
   end
 
   def show
@@ -16,32 +16,39 @@ class ListsController < ApplicationController
   def edit
   end
 
-
   def create
-    List.create_list(list_params, @board)
-    redirect_to board_lists_path
+    @list = @board.lists.new(list_params)
+    if @list.save 
+      redirect_to [@board, @list]
+    else 
+      render :new
+    end
   end
 
   def update
-    List.update_list(@list.id, list_params)
+    if @list.update(list_params)
+      redirect_to [@board, @list]
+    else 
+      render :edit 
+    end 
   end
 
   def destroy
-    List.delete_list(@list.id)
-    redirect_to board_list_path
+    @list.destroy
+    redirect_to board_lists_path
   end
 
   private 
 
-  def set_board 
-    @board = Board.single_board(params[:board_id])
+  def set_board
+    @board = current_user.boards.find(params[:board_id])
   end
-  
+
     def set_list 
-      @list = List.single_list(params[:id])
+      @list = List.find(params[:id])
     end 
 
     def list_params 
-      params.require(:list).permit(:name, :boards_attributes => [:name])
+      params.require(:list).permit(:name)
     end
 end

@@ -1,3 +1,76 @@
-// Place all the styles related to the Boards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:500|Lobster');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #009f21;
+  color: white;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  max-width: 99%;
+  margin: 0 auto;
+  border-bottom: 5px solid #007f11;
+}
+
+nav img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+#left-nav {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%; 
+}
+
+#right-nav {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%; 
+}
+
+.lin_to {
+  color: #fff;
+  background-color: rgba(250, 250, 250, 0.4);
+  border-radius: 5px;
+}
+
+.lin_to:hover {
+  color: #111;
+  background-color: rgba(250, 250, 250, 0.9);
+
+}
+
+.nav_link {
+  color: #fff;
+  background-color: rgba(250, 250, 250, 0.4);
+  border-radius: 5px;
+  height: 100%;
+  padding-top: 10%;
+  padding-right: 50%;
+  padding-bottom: 10%;
+  padding-left: 50%;
+}
+
+.nav_link:hover {
+  color: #111;
+  background-color: rgba(250, 250, 250, 0.8);
+
+}
+
+#trolly {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  height: 80%;
+
+}

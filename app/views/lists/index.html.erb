@@ -4,7 +4,7 @@
 
 <% @lists.each do |list| %>
   <div>
-    <h3> <%= link_to list.list_name, list %> </h3>
+    <h3> <%= link_to list.list_name, [@board, list] %> </h3>
   </div>
 
 <% end %>

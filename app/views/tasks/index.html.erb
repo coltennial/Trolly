@@ -1,10 +1,12 @@
 <h1>Tasks</h1>
 
-<%= link_to "Task", new_list_Task_path %>
+<%= link_to "Add New Task", new_list_task_path %>
 
-<% @Tasks.each do |Task| %>
+<% @tasks.each do |task| %>
   <div>
-    <h3> <%= link_to Task.Task_name, Task %> </h3>
+
+    <h3> <%= link_to Task.task_name, [@list, task] %> </h3>
+
   </div>
 
 <% end %>
