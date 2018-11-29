@@ -11,6 +11,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require "devise"
+require "support/controller_macros"
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:
@@ -22,8 +25,26 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  #Factory Bot Setup
-  config.include FactoryBot::Syntax::Methods
+  # Devise Controller Spec Configuration
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, type: :controller
+
+  # Database Cleaner Configuration
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+  
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.use_transactional_fixtures = true
+  config.infer_spec_type_from_file_location!
+  config.filter_rails_from_backtrace!
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

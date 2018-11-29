@@ -15,15 +15,17 @@ gem 'devise'
 gem 'semantic-ui-sass'
 
 group :development, :test do
-    # Call this method to help debug
+    # Call this method to help debug (ALPACA)
   gem 'pry'
-  # Rails testing framework
+  # Rails testing framework (ALPACA)
   gem 'rspec-rails'
-  # Provides Fast and Easy Testing
-  gem 'shoulda-matchers'
+  # Keeps testing database clean (ALPACA)
+  gem 'database_cleaner'
+  # Provides Fast and Easy Testing (ALPACA)
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   # Handles Test Coverage
   gem 'simplecov'
-  # Allows us to build data quicker and easier
+  # Allows us to build data quicker and easier (ALPACA)
   gem 'factory_bot_rails'
 end
 
